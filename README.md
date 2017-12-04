@@ -1,7 +1,5 @@
 # ngx-txt-img
 
-![text](https://img.shields.io/github/commits/google/skia/last.svg)
-
 The AngularJS Component was developed for a reason where it was really important to render image instead of text on the fly.
 
 You can also use this package to convert from text to image and then save it.
@@ -15,7 +13,7 @@ To install this library, run:
 $ npm install ngx-txt-img --save
 ```
 
-## Consuming your library
+## Consuming library
 
 You can import your library in any Angular application by running:
 
