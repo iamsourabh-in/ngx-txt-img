@@ -1,5 +1,7 @@
 # ngx-txt-img
 
+![Alt text](/blob/master/src/assets/download.png?raw=true "Image")
+
 The AngularJS Component was developed for a reason where it was really important to render image instead of text on the fly.
 
 You can also use this package to convert from text to image and then save it.
