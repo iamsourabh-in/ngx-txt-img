@@ -1,6 +1,7 @@
 # ngx-txt-img
 
 ![Alt text](/blob/master/src/assets/download.png?raw=true "Image")
+![Alt text](https://github.com/codeRusty/ngx-txt-img/blob/master/src/assets/download.png)
 
 The AngularJS Component was developed for a reason where it was really important to render image instead of text on the fly.
 
