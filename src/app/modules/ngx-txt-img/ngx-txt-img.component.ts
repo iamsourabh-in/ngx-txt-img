@@ -2,7 +2,7 @@ import { Component, ViewChild, Input } from '@angular/core';
 import { CanvasContext2DType } from './extendedTypes';
 
 @Component({
-  selector: 'app-ngx-txt-img',
+  selector: 'ngx-txt-img',
   templateUrl: './ngx-txt-img.component.html',
   styleUrls: ['./ngx-txt-img.component.css']
 })

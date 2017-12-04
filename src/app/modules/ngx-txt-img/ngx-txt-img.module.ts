@@ -7,6 +7,7 @@ import { NgxTxtImgComponent } from "./ngx-txt-img.component";
   imports: [
     CommonModule
   ],
-  declarations: [NgxTxtImgComponent]
+  declarations: [NgxTxtImgComponent],
+  exports: [NgxTxtImgComponent]
 })
 export class NgxTxtImgModule { }

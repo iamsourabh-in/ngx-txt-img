@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { NgxTxtImgModule } from './modules/ngx-txt-img/ngx-txt-img.module';
 import { AppComponent } from './app.component';
 
 
@@ -10,7 +9,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, NgxTxtImgModule
   ],
   providers: [],
   bootstrap: [AppComponent]

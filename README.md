@@ -26,28 +26,22 @@ and then from your Angular `AppModule`:
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 
-// Import your library
-import { TxtImgModule } from 'ngx-txt-img';
+import { NgxTxtImgModule } from './modules/ngx-txt-img/ngx-txt-img.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    
-    TxtImgModule
-    // Specify your library as an import
-    
-    LibraryModule
+    BrowserModule, NgxTxtImgModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
 ```
 
 Once your library is imported, you can use its components, directives and pipes in your Angular application:
