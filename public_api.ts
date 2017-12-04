@@ -1,0 +1,1 @@
+export * from './src/app/modules/ngx-txt-img/ngx-txt-img.component'
