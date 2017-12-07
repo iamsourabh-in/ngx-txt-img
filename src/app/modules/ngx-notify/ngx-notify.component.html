@@ -1,0 +1,20 @@
+<div *ngIf="alert" [@notificationState]="state" [ngClass]="{'alert-info':alert}" class="alert">
+
+  <div [ngClass]="{
+  'modal-head-success':isSuccess,
+  'modal-head-info':isInfo,
+  'modal-head-warn':isWarning,
+  'modal-head-error':isError
+
+}">
+    <span (click)="close()" class="hov-close">X</span>
+  </div>
+  <div [ngClass]="{
+    'modal-body-success':isSuccess,
+    'modal-body-info':isInfo,
+    'modal-body-warn':isWarning,
+    'modal-body-error':isError
+  }">
+    <span data-notify="message">{{alert.text}}</span>
+  </div>
+</div>
