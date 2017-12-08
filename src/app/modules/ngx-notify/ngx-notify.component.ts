@@ -11,7 +11,7 @@ import { NotificationType } from './ngx-notificationType';
     trigger('notificationState', [
       state('inactive', style({
         opacity: 0,
-        transform: 'translateY(-80%)',
+        transform: 'translateY(-50%)',
       })),
       state('active', style({
         opacity: 1,
@@ -26,11 +26,7 @@ export class NgxNotifyComponent implements OnInit {
   allAlerts: IAlert[] = [];
   alert: IAlert;
   // state = 'inactive';
-  isSuccess = false;
-  isWarning = false;
-  isInfo = false;
-  isError = false;
-  mainRawHTML = '';
+ 
 
   constructor(public notify: NgxNotifyService) { }
 
@@ -39,33 +35,12 @@ export class NgxNotifyComponent implements OnInit {
       if (alert) {
         this.alert = alert;
         this.alert.state = 'active';
-        this.allAlerts.push(JSON.parse(JSON.stringify(this.alert)));
-
-        if (this.alert != null && this.alert.type == NotificationType.success) {
-
-          this.isSuccess = true;
-          this.isWarning = false;
-          this.isInfo = false;
-          this.isError = false;
-        }
-        if (this.alert != null && this.alert.type == NotificationType.info) {
-          this.isSuccess = false;
-          this.isWarning = false;
-          this.isInfo = true;
-          this.isError = false;
-        }
-        if (this.alert != null && this.alert.type == NotificationType.warn) {
-          this.isSuccess = false;
-          this.isWarning = true;
-          this.isInfo = false;
-          this.isError = false;
-        }
-        if (this.alert != null && this.alert.type == NotificationType.error) {
-          this.isSuccess = false;
-          this.isWarning = false;
-          this.isInfo = false;
-          this.isError = true;
-        }
+        let temp = JSON.parse(JSON.stringify(this.alert))
+        this.allAlerts.push(temp);
+        setTimeout(() => {
+          this.close(temp);
+        }, 3000);
+        
         //this.toggleState();
       }
     });
@@ -79,7 +54,7 @@ export class NgxNotifyComponent implements OnInit {
       let indxOF = this.allAlerts.indexOf(al);
       this.allAlerts.splice(indxOF, 1);
     }, 1000);
-    // this.toggleState();
+  
   }
 
   toggleState() {
