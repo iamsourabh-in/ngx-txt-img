@@ -1,20 +1,25 @@
-<div *ngIf="alert" [@notificationState]="state" [ngClass]="{'alert-info':alert}" class="alert">
+<div class="ncontain">
 
-  <div [ngClass]="{
-  'modal-head-success':isSuccess,
-  'modal-head-info':isInfo,
-  'modal-head-warn':isWarning,
-  'modal-head-error':isError
+  <div *ngFor="let al of allAlerts">
+    <div *ngIf="al" [@notificationState]="al.state" [ngClass]="{'alert-info':alert}" class="alert">
+
+      <div [ngClass]="{
+  'modal-head-success':al.type==0,
+  'modal-head-info':al.type==1,
+  'modal-head-warn':al.type==2,
+  'modal-head-error':al.type==3
 
 }">
-    <span (click)="close()" class="hov-close">X</span>
-  </div>
-  <div [ngClass]="{
-    'modal-body-success':isSuccess,
-    'modal-body-info':isInfo,
-    'modal-body-warn':isWarning,
-    'modal-body-error':isError
+        <span (click)="close(al)" class="hov-close">X</span>
+      </div>
+      <div [ngClass]="{
+    'modal-body-success':al.type==0,
+    'modal-body-info':al.type==1,
+    'modal-body-warn':al.type==2,
+    'modal-body-error':al.type==3
   }">
-    <span data-notify="message">{{alert.text}}</span>
+        <span data-notify="message">{{al.text}}</span>
+      </div>
+    </div>
   </div>
 </div>

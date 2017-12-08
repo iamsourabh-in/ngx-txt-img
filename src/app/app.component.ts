@@ -14,15 +14,15 @@ export class AppComponent {
   }
   title = 'app';
   success() {
-    this.notify.success('This is long text to check what length can be the max f isuccess. his is long text to check what length can be the max f isuccess', false);
+    this.notify.success('This is a success notification', false);
   }
   error() {
-    this.notify.error('This is long text to check what length can be the max f isuccess. his is long text to check what length can be the max f isuccess', false);
+    this.notify.error('This is an error notification', false);
   }
   warn() {
-    this.notify.warn('This is long text to check what length can be the max f isuccess. his is long text to check what length can be the max f isuccess', false);
+    this.notify.warn('This is a warning notification', false);
   }
   info() {
-    this.notify.info('This is long text to check what length can be the max f isuccess. his is long text to check what length can be the max f isuccess', false);
+    this.notify.info('This is an Info notification', false);
   }
 }

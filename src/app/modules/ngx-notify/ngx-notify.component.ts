@@ -11,7 +11,7 @@ import { NotificationType } from './ngx-notificationType';
     trigger('notificationState', [
       state('inactive', style({
         opacity: 0,
-        transform: 'translateY(-50%)',
+        transform: 'translateY(-80%)',
       })),
       state('active', style({
         opacity: 1,
@@ -23,56 +23,67 @@ import { NotificationType } from './ngx-notificationType';
   ]
 })
 export class NgxNotifyComponent implements OnInit {
+  allAlerts: IAlert[] = [];
   alert: IAlert;
-  state = 'inactive';
+  // state = 'inactive';
   isSuccess = false;
   isWarning = false;
   isInfo = false;
   isError = false;
-
+  mainRawHTML = '';
 
   constructor(public notify: NgxNotifyService) { }
 
   ngOnInit() {
     this.notify.getMessage().subscribe(alert => {
-      this.alert = alert;
-      if (this.alert != null && this.alert.type == NotificationType.success) {
-        this.isSuccess = true;
-        this.isWarning = false;
-        this.isInfo = false;
-        this.isError = false;
-      }
-      if (this.alert != null && this.alert.type == NotificationType.info) {
-        this.isSuccess = false;
-        this.isWarning = false;
-        this.isInfo = true;
-        this.isError = false;
-      }
-      if (this.alert != null && this.alert.type == NotificationType.warn) {
-        this.isSuccess = false;
-        this.isWarning = true;
-        this.isInfo = false;
-        this.isError = false;
-      }
-      if (this.alert != null && this.alert.type == NotificationType.error) {
-        this.isSuccess = false;
-        this.isWarning = false;
-        this.isInfo = false;
-        this.isError = true;
-      }
-      this.toggleState();
+      if (alert) {
+        this.alert = alert;
+        this.alert.state = 'active';
+        this.allAlerts.push(JSON.parse(JSON.stringify(this.alert)));
 
+        if (this.alert != null && this.alert.type == NotificationType.success) {
+
+          this.isSuccess = true;
+          this.isWarning = false;
+          this.isInfo = false;
+          this.isError = false;
+        }
+        if (this.alert != null && this.alert.type == NotificationType.info) {
+          this.isSuccess = false;
+          this.isWarning = false;
+          this.isInfo = true;
+          this.isError = false;
+        }
+        if (this.alert != null && this.alert.type == NotificationType.warn) {
+          this.isSuccess = false;
+          this.isWarning = true;
+          this.isInfo = false;
+          this.isError = false;
+        }
+        if (this.alert != null && this.alert.type == NotificationType.error) {
+          this.isSuccess = false;
+          this.isWarning = false;
+          this.isInfo = false;
+          this.isError = true;
+        }
+        //this.toggleState();
+      }
     });
 
   }
 
-  close() {
-    //this.alert = null;
-    this.toggleState();
+  close(al: any) {
+    console.log(al);
+    al.state = 'inactive';
+    setTimeout(() => {
+      let indxOF = this.allAlerts.indexOf(al);
+      this.allAlerts.splice(indxOF, 1);
+    }, 1000);
+    // this.toggleState();
   }
 
   toggleState() {
-    this.state = this.state === 'active' ? 'inactive' : 'active';
+    //   this.state = this.state === 'active' ? 'inactive' : 'active';
   }
 }
 
@@ -80,4 +91,5 @@ export class NgxNotifyComponent implements OnInit {
 interface IAlert {
   type: NotificationType,
   text: string
+  state: string;
 }
